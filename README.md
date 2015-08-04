@@ -1,0 +1,21 @@
+# cfml-interop
+
+A Clojure library designed to provide interoperability with CFML. This library is intended to be used by projects that are loaded into a CFML engine, such as [Lucee](http://lucee.org) via [FW/1](https://github.com/framework-one/fw1) or [cfmljure](https://github.com/framework-one/cfmljure).
+
+CFML can treat Clojure vectors as arrays (ArrayList variants) but CFML structs are case-insensitive hash maps with strings as keys. This library can convert both CFML structs and Clojure maps into a map-like data structure that is case-insensitive and can accept both keywords and strings as keys. This makes interoperability much easier.
+
+## Usage
+
+The main function here is `to-clj-struct` which converts CFML and Clojure (and compatible Java) data structures to a format that can be iterated over, indexed, and dereferenced by both CFML and Clojure.
+
+    (to-clj-struct {:a 1 :bC 2 :DeF 3})
+    ;;=> {"A" 1, "BC" 2, "DEF" 3}
+
+However, this map can still be indexed by keywords or strings.
+
+## License
+
+Copyright © 2015 World Singles llc
+
+Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.
