@@ -8,10 +8,36 @@ CFML can treat Clojure vectors as arrays (ArrayList variants) but CFML structs a
 
 The main function here is `to-clj-struct` which converts CFML and Clojure (and compatible Java) data structures to a format that can be iterated over, indexed, and dereferenced by both CFML and Clojure.
 
-    (to-clj-struct {:a 1 :bC 2 :DeF 3})
+    ;; add this Leiningen dependency:
+    
+    [cfml-interop "0.1.0"]
+    
+    ;; to use in Clojure:
+    (ns my.ns
+      (:require [cfml.interop :as cfml]))
+
+    (cfml/to-clj-struct {:a 1 :bC 2 :DeF 3})
     ;;=> {"A" 1, "BC" 2, "DEF" 3}
+    
+    // to use in CFML:
+    
+    // ensure "cfml.interop" is exposed via cfmljure
+    
+    // convert Clojure data structure to usable CFML data structure:
+    var data = cfml.interop.to_clj_struct( clj_data );
+    // now data is usable in CFML!
+    
+    // convert CFML data structure to usable Clojure data structure:
+    var data = cfml.interop.to_clj_struct( cfml_data );
+    // now data is usable in Clojure!
 
 However, this map can still be indexed by keywords or strings.
+
+## Testing
+
+Clone this repo and then run:
+
+    lein test-all
 
 ## License
 
