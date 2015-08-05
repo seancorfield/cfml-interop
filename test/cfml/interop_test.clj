@@ -15,17 +15,18 @@
 ;; simple struct tests:
 ;; ensure conversion from Clojure (keywords), Clojure (strings), Java
 
-(expect {"A" 1 "BC" 2 "DEF" 3}
-        (to-clj-struct {:a 1 :bC 2 :DeF 3}))
+(expect {"A" 1 "BC" 2 "DEF" 3 "G_H" 4}
+        (to-clj-struct {:a 1 :bC 2 :DeF 3 :g-h 4}))
 
-(expect {"A" 1 "BC" 2 "DEF" 3}
-        (to-clj-struct {"a" 1 "bC" 2 "DeF" 3}))
+(expect {"A" 1 "BC" 2 "DEF" 3 "G_H" 4}
+        (to-clj-struct {"a" 1 "bC" 2 "DeF" 3 "G_h" 4}))
 
-(expect {"A" 1 "BC" 2 "DEF" 3}
+(expect {"A" 1 "BC" 2 "DEF" 3 "G_H" 4}
         (to-clj-struct (doto (java.util.HashMap.)
                          (.put "a" 1)
                          (.put "bC" 2)
-                         (.put "DeF" 3))))
+                         (.put "DeF" 3)
+                         (.put "g-h" 4))))
 
 ;; simple struct access tests
 
@@ -34,6 +35,10 @@
 (expect 2 (get (to-clj-struct {:a 1 :bC 2 :DeF 3}) "bc"))
 
 (expect 3 (get (to-clj-struct {:a 1 :bC 2 :DeF 3}) "DEF"))
+
+(expect 4 (get (to-clj-struct {:a 1 :bC 2 :DeF 3 :g-h 4}) :G-h))
+(expect 4 (get (to-clj-struct {:a 1 :bC 2 :DeF 3 :g-h 4}) "g-H"))
+(expect 4 (get (to-clj-struct {:a 1 :bC 2 :DeF 3 :g-h 4}) "G_H"))
 
 ;; invocation tests:
 

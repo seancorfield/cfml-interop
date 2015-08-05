@@ -10,7 +10,7 @@ The main function here is `to-clj-struct` which converts CFML and Clojure (and c
 
     ;; add this Leiningen dependency:
     
-    [cfml-interop "0.1.0"]
+    [cfml-interop "0.1.1"]
     
     ;; NOTE: REQUIRES Clojure 1.7.0 OR LATER!
     
@@ -40,6 +40,11 @@ However, this map can still be indexed by keywords or strings.
 Clone this repo and then run:
 
     lein test-all
+
+## Changes
+
+0.1.1 -- 2015 Aug 05 -- Support - / _ translation #1.
+0.1.0 -- 2015 Aug 04 -- Initial public release.
 
 ## License
 

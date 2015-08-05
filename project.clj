@@ -1,4 +1,4 @@
-(defproject cfml-interop "0.1.0"
+(defproject cfml-interop "0.1.1"
   :description "CFML/Clojure interop library extracted from World Singles code"
   :url "https://github.com/seancorfield/cfml-interop"
   :license {:name "Eclipse Public License"

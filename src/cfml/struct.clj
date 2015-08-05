@@ -26,18 +26,22 @@
   ([s]
    [[] s]))
 
+;; rules for mapping keys
+
+(defn- to-key [key] (-> key name str/upper-case (str/replace "-" "_")))
+
 ;; IPersistentMap
 
 (defn -assoc [this key val]
-  (CaseInsensitiveMap. (assoc (.-m this) (str/upper-case (name key)) val)))
+  (CaseInsensitiveMap. (assoc (.-m this) (to-key key) val)))
 
 (defn -assocEx [this key val]
-  (if (.containsKey (.-m this) (str/upper-case (name key)) val)
+  (if (.containsKey (.-m this) (to-key key) val)
     (throw (ex-info "Key already present" {}))
-    (CaseInsensitiveMap. (assoc (.-m this) (str/upper-case (name key)) val))))
+    (CaseInsensitiveMap. (assoc (.-m this) (to-key key) val))))
 
 (defn -without [this key]
-  (CaseInsensitiveMap. (dissoc (.-m this) (str/upper-case (name key)))))
+  (CaseInsensitiveMap. (dissoc (.-m this) (to-key key))))
 
 ;; Seqable
 
@@ -52,18 +56,18 @@
 ;; Associative
 
 (defn -containsKey [this key]
-  (.containsKey (.-m this) (str/upper-case (name key))))
+  (.containsKey (.-m this) (to-key key)))
 
 (defn -entryAt [this key]
-  (.entryAt (.-m this) (str/upper-case (name key))))
+  (.entryAt (.-m this) (to-key key)))
 
 ;; ILookup
 
 (defn -valAt
   ([this key]
-   (.valAt (.-m this) (str/upper-case (name key)) nil))
+   (.valAt (.-m this) (to-key key) nil))
   ([this key notFound]
-   (.valAt (.-m this) (str/upper-case (name key)) notFound)))
+   (.valAt (.-m this) (to-key key) notFound)))
 
 ;; Counted
 
@@ -78,4 +82,4 @@
 ;; CFML member functions
 
 (defn -keyExists [this key]
-  (.containsKey (.-m this) (str/upper-case (name key))))
+  (.containsKey (.-m this) (to-key key)))
