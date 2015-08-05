@@ -13,7 +13,8 @@
               :init clojure-struct
               :state "m"
               :constructors {[] []
-                             [clojure.lang.IPersistentMap] []})
+                             [clojure.lang.IPersistentMap] []}
+              :methods [[keyExists [String] Boolean]])
   (:import cfml.interop.CaseInsensitiveMap))
 
 (defn -clojure-struct
@@ -73,3 +74,8 @@
 
 (defn -empty [this]
   (CaseInsensitiveMap.))
+
+;; CFML member functions
+
+(defn -keyExists [this key]
+  (.containsKey (.-m this) (str/upper-case (name key))))
