@@ -49,6 +49,32 @@
 
 (expect #{"A" "BC" "DEF"} (set (keys (to-clj-struct {:a 1 :bC 2 :DeF 3}))))
 
+;; nested vector and map tests
+
+(expect {"A" 4 "BC" 5 "DEF" 6}
+        (nth (to-clj-struct [{:a 1 :bC 2 :DeF 3}
+                             {:a 4 :bC 5 :DeF 6}
+                             {:a 7 :bC 8 :DeF 9}]) 1))
+
+(expect {"A" 4 "BC" 5 "DEF" 6}
+        ((to-clj-struct {:a 1
+                         :bC {:a 4 :bC 5 :DeF 6}
+                         :DeF {:a 7 :bC 8 :DeF 9}}) :BC))
+
+;; sets should convert to structs with true values
+
+(expect {"A" true "BC" true "DEF" true}
+        (to-clj-struct #{:a "bC" :DeF}))
+
+(expect {"A" true "BC" true "DEF" true}
+        ((to-clj-struct {:a 1
+                         :bC #{:a :bC :DeF}
+                         :DeF {:a 7 :bC 8 :DeF 9}}) :BC))
+
+;; don't touch a set of numbers
+
+(expect #{1 2 3} (to-clj-struct #{3 2 1}))
+
 ;; empty value tests
 
 (expect [] (to-clj-struct []))

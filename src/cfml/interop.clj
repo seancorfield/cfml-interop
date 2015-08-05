@@ -27,4 +27,7 @@
         (instance? java.util.Map m) (into (struct-new) (apply hash-map (mapcat nested-to-clj-struct m)))
         (instance? java.math.BigDecimal m) (.doubleValue ^java.math.BigDecimal m)
         (instance? java.math.BigInteger m) (.longValue ^java.math.BigInteger m)
+        (and (set? m)
+             (every? (fn [e] (or (string? e) (keyword? e))) m))
+        (to-clj-struct (zipmap m (repeat true)))
         :else m))
