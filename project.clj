@@ -17,12 +17,10 @@
                                   [org.clojure/test.check "0.6.1"]]
                    :injections [(require 'expectations)
                                 (expectations/disable-run-on-shutdown)]}
-             :1.6 {:dependencies [[org.clojure/clojure "1.6.0"]]}
              :master {:repositories [["snapshots" "https://oss.sonatype.org/content/repositories/snapshots/"]]
                       :dependencies [[org.clojure/clojure "1.8.0-master-SNAPSHOT"]]}}
 
-  :aliases {"test-all" ["with-profile" "dev,1.6,default:dev,default:dev,master,default"
-                        "do" "clean," "expectations"]}
+  :aliases {"test-all" ["with-profile" "dev,default:dev,master,default" "expectations"]}
 
   :jvm-opts ~(do (println "Ignore the warning about the user-level profile!")
                  (println "It's temporary until this Leiningen issue is fixed:")
