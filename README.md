@@ -12,6 +12,8 @@ The main function here is `to-clj-struct` which converts CFML and Clojure (and c
     
     [cfml-interop "0.1.0"]
     
+    ;; NOTE: REQUIRES Clojure 1.7.0 OR LATER!
+    
     ;; to use in Clojure:
     (ns my.ns
       (:require [cfml.interop :as cfml]))
