@@ -6,6 +6,10 @@
 (ns cfml.interop-test
   "Tests for case insensitive CFML/Clojure interoperability."
   (:require [cfml.interop :refer :all]
+            [clojure.string :as str]
+            [clojure.test.check :as tc]
+            [clojure.test.check.generators :as gen]
+            [clojure.test.check.properties :as prop]
             [expectations :refer :all]))
 
 ;; simple struct tests:
@@ -54,3 +58,21 @@
 ;; nil => empty struct (special case)
 
 (expect {} (to-clj-struct nil))
+
+;; property-based tests
+
+(expect (more-of {:keys [result num-tests]}
+                 true result
+                 100 num-tests)
+        (tc/quick-check
+         100
+         (prop/for-all [m (gen/such-that
+                           not-empty
+                           (gen/map (gen/one-of [gen/keyword gen/string-alphanumeric])
+                                    gen/int))]
+                       (let [k (rand-nth (keys m))
+                             s (to-clj-struct m)]
+                         (= (s k)
+                            (s (str/lower-case (name k)))
+                            (s (str/upper-case (name k)))
+                            (s (keyword (name k))))))))
