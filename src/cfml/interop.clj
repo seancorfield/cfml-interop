@@ -27,3 +27,43 @@
              (every? (fn [e] (or (string? e) (keyword? e))) m))
         (to-clj-struct (zipmap m (repeat true)))
         :else m))
+
+(defn ->long
+  "Convert (string) value to a long. Return the default
+  value if conversion fails."
+  ([v] (->long v 0))
+  ([v d]
+   (try
+     (if (number? v)
+       (long v)
+       (-> (java.text.NumberFormat/getInstance) (.parse v) .longValue))
+     (catch Exception _
+       d))))
+
+(defn ->double
+  "Convert (string) value to a double. Return the default
+  value if conversion fails."
+  ([v] (->double v 0.0))
+  ([v d]
+   (try
+     (if (number? v)
+       (double v)
+       (-> (java.text.NumberFormat/getInstance) (.parse v) .doubleValue))
+     (catch Exception _
+       d))))
+
+(defn ->boolean
+  "Convert (string) value to a boolean. Return the default value
+  if conversion fails.
+  Accepts: Boolean, number, numeric strings, true/false and yes/no."
+  ([v] (->boolean v false))
+  ([v d]
+   (try
+     (cond
+       (instance? Boolean v) v
+       (number? v) (not (zero? v))
+       (not (zero? (->long v))) true
+       :else
+       (boolean (#{"true" "yes"} (clojure.string/lower-case (str v)))))
+     (catch Exception _
+       d))))
