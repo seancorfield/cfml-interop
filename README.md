@@ -10,7 +10,7 @@ The main function here is `to-clj-struct` which converts CFML and Clojure (and c
 
     ;; add this Leiningen dependency:
     
-    [cfml-interop "0.1.1"]
+    [cfml-interop "0.1.2"]
     
     ;; NOTE: REQUIRES Clojure 1.7.0 OR LATER!
     
@@ -35,6 +35,8 @@ The main function here is `to-clj-struct` which converts CFML and Clojure (and c
 
 However, this map can still be indexed by keywords or strings.
 
+In addition, as of 0.1.2, this provides `->long`, `->double`, and `->boolean` data coercions.
+
 ## Testing
 
 Clone this repo and then run:
@@ -43,6 +45,7 @@ Clone this repo and then run:
 
 ## Changes
 
+0.1.2 -- 2015 Sep 06 -- Add data coercions.
 0.1.1 -- 2015 Aug 05 -- Support - / _ translation #1.
 0.1.0 -- 2015 Aug 04 -- Initial public release.
 
