@@ -4,13 +4,15 @@ A Clojure library designed to provide interoperability with CFML. This library i
 
 CFML can treat Clojure vectors as arrays (ArrayList variants) but CFML structs are case-insensitive hash maps with strings as keys. This library can convert both CFML structs and Clojure maps into a map-like data structure that is case-insensitive and can accept both keywords and strings as keys. This makes interoperability much easier.
 
+In addition, this library provides a number of useful data coercions: when faced with string inputs via URL and form scope, you often want to robustly convert them to `Long`, `Double`, or `Boolean`. The `cfml.coerce` namespace provides `->long`, `->double`, and `->boolean` for this.
+
 ## Usage
 
 The main function here is `to-clj-struct` which converts CFML and Clojure (and compatible Java) data structures to a format that can be iterated over, indexed, and dereferenced by both CFML and Clojure.
 
     ;; add this Leiningen dependency:
     
-    [cfml-interop "0.1.2"]
+    [cfml-interop "0.2.0"]
     
     ;; NOTE: REQUIRES Clojure 1.7.0 OR LATER!
     
@@ -35,7 +37,7 @@ The main function here is `to-clj-struct` which converts CFML and Clojure (and c
 
 However, this map can still be indexed by keywords or strings.
 
-In addition, as of 0.1.2, this provides `->long`, `->double`, and `->boolean` data coercions.
+In addition, as of 0.2.0, this provides `->long`, `->double`, and `->boolean` data coercions in the `cfml.coerce` namespace.
 
 ## Testing
 
@@ -45,6 +47,7 @@ Clone this repo and then run:
 
 ## Changes
 
+0.2.0 -- 2015 Sep 07 -- Move data coercions to `cfml.coerce` namespace (breaking change if you used them in 0.1.2).
 0.1.2 -- 2015 Sep 06 -- Add data coercions.
 0.1.1 -- 2015 Aug 05 -- Support - / _ translation #1.
 0.1.0 -- 2015 Aug 04 -- Initial public release.
