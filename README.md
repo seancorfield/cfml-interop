@@ -12,7 +12,7 @@ The main function here is `to-clj-struct` which converts CFML and Clojure (and c
 
     ;; add this Leiningen dependency:
     
-    [cfml-interop "0.2.0"]
+    [cfml-interop "0.2.1"]
     
     ;; NOTE: REQUIRES Clojure 1.7.0 OR LATER!
     
@@ -47,14 +47,15 @@ Clone this repo and then run:
 
 ## Changes
 
-0.2.0 -- 2015 Sep 07 -- Move data coercions to `cfml.coerce` namespace (breaking change if you used them in 0.1.2).
-0.1.2 -- 2015 Sep 06 -- Add data coercions.
-0.1.1 -- 2015 Aug 05 -- Support - / _ translation #1.
-0.1.0 -- 2015 Aug 04 -- Initial public release.
+* 0.2.1 -- 2016 Jun 09 -- Update dependencies; test against 1.9.0 (master).
+* 0.2.0 -- 2015 Sep 07 -- Move data coercions to `cfml.coerce` namespace (breaking change if you used them in 0.1.2).
+* 0.1.2 -- 2015 Sep 06 -- Add data coercions.
+* 0.1.1 -- 2015 Aug 05 -- Support - / _ translation #1.
+* 0.1.0 -- 2015 Aug 04 -- Initial public release.
 
 ## License
 
-Copyright © 2015 World Singles llc
+Copyright © 2015-2016 World Singles llc
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
