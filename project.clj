@@ -1,4 +1,4 @@
-(defproject cfml-interop "0.2.1"
+(defproject cfml-interop "0.2.2"
   :description "CFML/Clojure interop library extracted from World Singles code"
   :url "https://github.com/seancorfield/cfml-interop"
   :license {:name "Eclipse Public License"
@@ -8,8 +8,8 @@
 
   :aot [cfml.struct]
 
-  :plugins [[cider/cider-nrepl "0.9.1"]
-            [refactor-nrepl "1.1.0"]
+  :plugins [[cider/cider-nrepl "0.12.0"]
+            [refactor-nrepl "2.2.0"]
             [lein-expectations "0.0.8"]]
 
   :profiles {:dev {:dependencies [[expectations "2.1.8"]
