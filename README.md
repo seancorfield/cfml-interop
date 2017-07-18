@@ -43,10 +43,13 @@ In addition, as of 0.2.0, this provides `->long`, `->double`, and `->boolean` da
 
 Clone this repo and then run:
 
-    lein test-all
+    boot aot expectations
 
 ## Changes
 
+* 0.2.4 -- 2017 Jul 18 -- Switch to Boot.
+* 0.2.3 -- 2017 Jul 18 -- Minor dependency update; drop nREPL plugin.
+* 0.2.2 -- 2016 Jun 28 -- Minor dependency update.
 * 0.2.1 -- 2016 Jun 09 -- Update dependencies; test against 1.9.0 (master).
 * 0.2.0 -- 2015 Sep 07 -- Move data coercions to `cfml.coerce` namespace (breaking change if you used them in 0.1.2).
 * 0.1.2 -- 2015 Sep 06 -- Add data coercions.
@@ -55,7 +58,7 @@ Clone this repo and then run:
 
 ## License
 
-Copyright © 2015-2016 World Singles llc
+Copyright © 2015-2017 World Singles llc
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
