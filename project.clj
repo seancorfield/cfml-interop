@@ -1,4 +1,4 @@
-(defproject cfml-interop "0.2.2"
+(defproject cfml-interop "0.2.3"
   :description "CFML/Clojure interop library extracted from World Singles code"
   :url "https://github.com/seancorfield/cfml-interop"
   :license {:name "Eclipse Public License"
@@ -8,12 +8,10 @@
 
   :aot [cfml.struct]
 
-  :plugins [[cider/cider-nrepl "0.12.0"]
-            [refactor-nrepl "2.2.0"]
-            [lein-expectations "0.0.8"]]
+  :plugins [[lein-expectations "0.0.8"]]
 
-  :profiles {:dev {:dependencies [[expectations "2.1.8"]
-                                  [org.clojure/test.check "0.9.0"]]
+  :profiles {:dev {:dependencies [[expectations "2.2.0-beta1"]
+                                  [org.clojure/test.check "0.10.0-alpha2"]]
                    :injections [(require 'expectations)
                                 (expectations/disable-run-on-shutdown)]}
              :master {:repositories [["snapshots" "https://oss.sonatype.org/content/repositories/snapshots/"]]
