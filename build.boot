@@ -1,9 +1,9 @@
 (def project 'cfml-interop)
-(def version "0.2.4")
+(def version "0.2.5")
 
 (set-env! :resource-paths #{"src"}
           :source-paths   #{"test"}
-          :dependencies   '[[org.clojure/clojure "1.8.0" :scope "provided"]
+          :dependencies   '[[org.clojure/clojure "1.10.0-beta3"]
                             [seancorfield/boot-expectations "1.0.11" :scope "test"]
                             [expectations "2.2.0-beta1" :scope "test"]
                             [org.clojure/test.check "0.10.0-alpha2" :scope "test"]])

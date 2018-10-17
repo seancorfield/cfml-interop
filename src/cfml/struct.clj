@@ -11,7 +11,7 @@
   (:gen-class :name cfml.interop.CaseInsensitiveMap
               :extends clojure.lang.APersistentMap
               :init clojure-struct
-              :state "m"
+              :state m
               :constructors {[] []
                              [clojure.lang.IPersistentMap] []}
               :methods [[keyExists [String] Boolean]])
