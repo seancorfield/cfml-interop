@@ -4,7 +4,7 @@
   <groupId>cfml-interop</groupId>
   <artifactId>cfml-interop</artifactId>
   <packaging>jar</packaging>
-  <version>0.2.6</version>
+  <version>0.2.7</version>
   <name>cfml-interop</name>
   <description>CFML/Clojure interop library extracted from World Singles code</description>
   <url>https://github.com/seancorfield/cfml-interop</url>
@@ -17,8 +17,7 @@
   <scm>
     <connection>scm:git:git://github.com/seancorfield/cfml-interop.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/seancorfield/cfml-interop.git</developerConnection>
-    <tag>f5ce9f30e13d7d354034b3a07331f7332d67dc08
-</tag>
+    <tag>f5ce9f30e13d7d354034b3a07331f7332d67dc08</tag>
     <url>https://github.com/seancorfield/cfml-interop</url>
   </scm>
   <build>
