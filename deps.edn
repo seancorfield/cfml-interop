@@ -1,2 +1,7 @@
-{:deps {org.clojure/clojure {:mvn/version "1.10.0-beta3"}}
- :paths ["classes" "src"]}
+{:deps {org.clojure/clojure {:mvn/version "1.10.0"}}
+ :paths ["classes" "src"]
+ :aliases 
+ {:compile {:main-opts ["-e" "(compile,'cfml.struct)"]}
+  :build {:extra-deps {seancorfield/depstar {:mvn/version "RELEASE"}}
+          :main-opts ["-e" "(compile,'cfml.struct)"
+                      "-m" "hf.depstar.jar" "cfml-interop.jar"]}}}
