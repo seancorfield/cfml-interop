@@ -17,7 +17,7 @@
   <scm>
     <connection>scm:git:git://github.com/seancorfield/cfml-interop.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/seancorfield/cfml-interop.git</developerConnection>
-    <tag>2cc281bbb520974ab73a30e62122bcf8778a4e37</tag>
+    <tag>c8b31ceb508b2e736469c5e286c2a3a2d74a973a</tag>
     <url>https://github.com/seancorfield/cfml-interop</url>
   </scm>
   <build>
