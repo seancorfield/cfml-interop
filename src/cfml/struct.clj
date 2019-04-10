@@ -1,4 +1,4 @@
-;; Copyright (c) 2015 World Singles llc
+;; Copyright (c) 2015-2019 World Singles Networks llc
 ;;
 ;; Released under the Eclipse Public License 1.0
 ;; http://www.eclipse.org/legal/epl-v10.html
@@ -28,7 +28,23 @@
 
 ;; rules for mapping keys
 
-(defn- to-key [key] (-> key name str/upper-case (str/replace "-" "_")))
+(defn- to-key
+  "Convert a string or keyword key to an uppercase string key
+  that is suitable for use in CFML, with the caveat that we
+  support namespaced keywords that become NS/KEY which can only
+  be used in CFML via obj[key] notation. This is done to support
+  proper namespaced keys in Clojure code, called from CFML."
+  [key]
+  (if-let [key-ns (and (keyword? key) (namespace key))]
+    (-> key
+        (name)
+        (->> (str key-ns "/"))
+        (str/upper-case)
+        (str/replace "-" "_"))
+    (-> key
+        (name)
+        (str/upper-case)
+        (str/replace "-" "_"))))
 
 ;; IPersistentMap
 

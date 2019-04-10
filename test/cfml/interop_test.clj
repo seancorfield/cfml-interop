@@ -54,6 +54,16 @@
 
 (expect #{"A" "BC" "DEF"} (set (keys (to-clj-struct {:a 1 :bC 2 :DeF 3}))))
 
+;; assoc tests
+
+(expect 4 (:foo/bar (assoc (to-clj-struct {:a 1 :bC 2 :DeF 3}) :foo/bar 4)))
+
+(expect nil (:bar (assoc (to-clj-struct {:a 1 :bC 2 :DeF 3}) :foo/bar 4)))
+
+(expect nil (:foo (assoc (to-clj-struct {:a 1 :bC 2 :DeF 3}) :foo/bar 4)))
+
+(expect 4 (get (assoc (to-clj-struct {:a 1 :bC 2 :DeF 3}) :foo/bar 4) "FOO/BAR"))
+
 ;; nested vector and map tests
 
 (expect {"A" 4 "BC" 5 "DEF" 6}

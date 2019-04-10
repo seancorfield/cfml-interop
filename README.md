@@ -11,26 +11,26 @@ In addition, this library provides a number of useful data coercions: when faced
 The main function here is `to-clj-struct` which converts CFML and Clojure (and compatible Java) data structures to a format that can be iterated over, indexed, and dereferenced by both CFML and Clojure.
 
     ;; add this Leiningen dependency:
-    
-    [cfml-interop "0.2.1"]
-    
+
+    [cfml-interop "0.2.8"]
+
     ;; NOTE: REQUIRES Clojure 1.7.0 OR LATER!
-    
+
     ;; to use in Clojure:
     (ns my.ns
       (:require [cfml.interop :as cfml]))
 
     (cfml/to-clj-struct {:a 1 :bC 2 :DeF 3})
     ;;=> {"A" 1, "BC" 2, "DEF" 3}
-    
+
     // to use in CFML:
-    
+
     // ensure "cfml.interop" is exposed via cfmljure
-    
+
     // convert Clojure data structure to usable CFML data structure:
     var data = cfml.interop.to_clj_struct( clj_data );
     // now data is usable in CFML!
-    
+
     // convert CFML data structure to usable Clojure data structure:
     var data = cfml.interop.to_clj_struct( cfml_data );
     // now data is usable in Clojure!
@@ -47,6 +47,10 @@ Clone this repo and then run:
 
 ## Changes
 
+* 0.2.8 -- 2019 Apr 09 -- Support namespaced keys.
+* 0.2.7 -- 2019 Feb 25 -- Switch to deps.edn.
+* 0.2.6 -- 2019 Feb 25 -- (bad version).
+* 0.2.5 -- 2018 Oct 17 -- Update to Clojure 1.10 / Java 8.
 * 0.2.4 -- 2017 Jul 18 -- Switch to Boot.
 * 0.2.3 -- 2017 Jul 18 -- Minor dependency update; drop nREPL plugin.
 * 0.2.2 -- 2016 Jun 28 -- Minor dependency update.
