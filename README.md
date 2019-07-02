@@ -12,7 +12,7 @@ The main function here is `to-clj-struct` which converts CFML and Clojure (and c
 
     ;; add this Leiningen dependency:
 
-    [cfml-interop "0.2.8"]
+    [cfml-interop "0.2.9"]
 
     ;; NOTE: REQUIRES Clojure 1.7.0 OR LATER!
 
@@ -43,10 +43,11 @@ In addition, as of 0.2.0, this provides `->long`, `->double`, and `->boolean` da
 
 Clone this repo and then run:
 
-    boot aot expectations
+    clj -A:test:runner
 
 ## Changes
 
+* 0.2.9 -- 2019 Jul 01 -- Update testing infrastructure.
 * 0.2.8 -- 2019 Apr 09 -- Support namespaced keys.
 * 0.2.7 -- 2019 Feb 25 -- Switch to deps.edn.
 * 0.2.6 -- 2019 Feb 25 -- (bad version).
@@ -62,7 +63,7 @@ Clone this repo and then run:
 
 ## License
 
-Copyright © 2015-2017 World Singles llc
+Copyright © 2015-2019 World Singles llc
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
