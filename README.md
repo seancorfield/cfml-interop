@@ -47,7 +47,7 @@ Clone this repo and then run:
 
 ## Changes
 
-* 0.2.9 -- 2019 Jul 01 -- Update testing infrastructure.
+* 0.2.9 -- 2019 Jul 01 -- Update testing infrastructure; back off to Clojure 1.8 to avoid compiling `clojure.core.specs.alpha` into the JAR.
 * 0.2.8 -- 2019 Apr 09 -- Support namespaced keys.
 * 0.2.7 -- 2019 Feb 25 -- Switch to deps.edn.
 * 0.2.6 -- 2019 Feb 25 -- (bad version).
