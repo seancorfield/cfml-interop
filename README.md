@@ -12,9 +12,9 @@ The main function here is `to-clj-struct` which converts CFML and Clojure (and c
 
     ;; add this Leiningen dependency:
 
-    [cfml-interop "0.2.9"]
+    [cfml-interop "0.3.0"]
 
-    ;; NOTE: REQUIRES Clojure 1.7.0 OR LATER!
+    ;; NOTE: REQUIRES Clojure 1.8.0 OR LATER!
 
     ;; to use in Clojure:
     (ns my.ns
@@ -47,6 +47,7 @@ Clone this repo and then run:
 
 ## Changes
 
+* 0.3.0 -- 2020 Oct 30 -- Handle structs with non-string/non-keyword keys by coercing the key to a string; bumps all dependencies up to latest; confirms that Clojure 1.8 is the minimum.
 * 0.2.9 -- 2019 Jul 01 -- Update testing infrastructure; back off to Clojure 1.8 to avoid compiling `clojure.core.specs.alpha` into the JAR.
 * 0.2.8 -- 2019 Apr 09 -- Support namespaced keys.
 * 0.2.7 -- 2019 Feb 25 -- Switch to deps.edn.

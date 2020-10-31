@@ -1,4 +1,4 @@
-;; Copyright (c) 2015-2019 World Singles Networks llc
+;; Copyright (c) 2015-2020 World Singles Networks llc
 ;;
 ;; Released under the Eclipse Public License 1.0
 ;; http://www.eclipse.org/legal/epl-v10.html
@@ -35,14 +35,17 @@
   be used in CFML via obj[key] notation. This is done to support
   proper namespaced keys in Clojure code, called from CFML."
   [key]
-  (if-let [key-ns (and (keyword? key) (namespace key))]
+  (if (keyword? key)
     (-> key
         (name)
-        (->> (str key-ns "/"))
+        (as-> s
+          (if-let [key-ns (namespace key)]
+            (str key-ns "/" s)
+            s))
         (str/upper-case)
         (str/replace "-" "_"))
     (-> key
-        (name)
+        (str)
         (str/upper-case)
         (str/replace "-" "_"))))
 
@@ -92,7 +95,7 @@
 
 ;; IPersistentCollection
 
-(defn -empty [this]
+(defn -empty [_]
   (CaseInsensitiveMap.))
 
 ;; CFML member functions

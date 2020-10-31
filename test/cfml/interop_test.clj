@@ -1,16 +1,23 @@
-;; Copyright (c) 2015-2019 World Singles Networks llc
+;; Copyright (c) 2015-2020 World Singles Networks llc
 ;;
 ;; Released under the Eclipse Public License 1.0
 ;; http://www.eclipse.org/legal/epl-v10.html
 
 (ns cfml.interop-test
   "Tests for case insensitive CFML/Clojure interoperability."
-  (:require [cfml.interop :refer :all]
+  {:clj-kondo/config
+   '{:lint-as
+     {expectations.clojure.test/defexpect clojure.test/deftest,
+      expectations.clojure.test/more-of clj-kondo.lint-as/def-catch-all
+      clojure.test.check.properties/for-all clojure.core/for}}}
+  (:require [cfml.interop :refer
+             [to-clj-struct]]
             [clojure.string :as str]
             [clojure.test.check :as tc]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
-            [expectations.clojure.test :refer :all]))
+            [expectations.clojure.test
+             :refer [defexpect expect more-of]]))
 
 ;; ensure conversion from Clojure (keywords), Clojure (strings), Java
 
@@ -100,6 +107,10 @@
 (defexpect nil-empty-struct-special-case
 
   (expect {} (to-clj-struct nil)))
+
+(defexpect number-keys-become-strings
+
+  (expect {"1" "one"} (to-clj-struct {1 "one"})))
 
 (defexpect property-based-tests
   (more-of {:keys [result num-tests]}
