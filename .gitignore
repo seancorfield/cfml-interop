@@ -1,3 +1,6 @@
+/.clj-kondo/.cache
+/.lsp/.cache
+/.portal/vs-code.edn
 /target
 /classes
 /checkouts

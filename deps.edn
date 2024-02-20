@@ -1,16 +1,15 @@
-{:deps {org.clojure/clojure {:mvn/version "1.8.0"}}
+{:deps {org.clojure/clojure {:mvn/version "1.11.1"}}
  :paths ["classes" "src"]
  :aliases
  {:compile {:main-opts ["-e" "(compile,'cfml.struct)"]}
   :test {:extra-paths ["test"]
-         :extra-deps {expectations/clojure-test {:mvn/version "1.2.1"}
-                      org.clojure/test.check {:mvn/version "1.1.0"}}}
-  :runner {:extra-deps {com.cognitect/test-runner
-                        {:git/url "https://github.com/cognitect-labs/test-runner"
-                         :sha "b6b3193fcc42659d7e46ecd1884a228993441182"}}
+         :extra-deps {com.github.seancorfield/expectations {:mvn/version "2.1.188"}
+                      org.clojure/test.check {:mvn/version "1.1.1"}}}
+  :runner {:extra-deps {io.github.cognitect-labs/test-runner
+                        {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
            :main-opts ["-e" "(compile,'cfml.struct)"
                        "-m" "cognitect.test-runner"
                        "-d" "test"]}
-  :build {:extra-deps {seancorfield/depstar {:mvn/version "1.1.132"}}
+  :build {:extra-deps {com.github.seancorfield/depstar {:mvn/version "2.1.303"}}
           :main-opts ["-e" "(compile,'cfml.struct)"
                       "-m" "hf.depstar.jar" "cfml-interop.jar"]}}}
